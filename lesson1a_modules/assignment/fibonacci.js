@@ -17,8 +17,6 @@ function fibonacci(num){
 
 }
 
-console.log(fibonacci(0));
-
 // Export the fibonacci function here:
 
-module.exports = {fibonacci};
+module.exports = fibonacci;

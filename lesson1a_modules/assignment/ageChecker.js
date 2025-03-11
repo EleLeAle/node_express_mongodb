@@ -13,4 +13,4 @@ function ageChecker(age){
 }
 
 // Export the ageChecker function here:
-module.exports = {ageChecker};
+module.exports = ageChecker;
