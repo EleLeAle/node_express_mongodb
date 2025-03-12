@@ -10,9 +10,15 @@ For example, if your code is in a folder called "MyCode", __dirname will tell yo
 * Asinc operation is only in FS, network, I/O operation (input/output);
 */
 let fileName = fs.readdirSync('test_folder');
+// console.log('fileName',fileName);
+
+// let testFileName = fs.readdirSync(__dirname);
+// console.log('testFileName \n',testFileName)
 
 const filesArr = [];
 const foldersArr = [];
+
+fileName.sort();
 
 fileName.forEach((elem) =>{
 
@@ -36,21 +42,26 @@ filesArr.forEach((elem) =>{
     nameArr = elem.split('.');
     if(nameArr.length === 1){
         sortFilesByExt.push(elem);
+        // console.log('\narr with only 1 elem\n', elem);
         return
     }
     if(nameArr[0]===''){
-        sortFilesByExt.push(elem)
+        sortFilesByExt.push(elem);
+        // console.log('\nfirst elem is empty string\n', elem);
         return;
     }
-    if(nameArr[-1]===''){
-        sortFilesByExt.push(elem)
-        return;
-    }
+    // if(nameArr[-1]===''){
+    //     sortFilesByExt.push(elem);
+    //     console.log('\n\n', elem)
+    //     return;
+    // }
 
     name = nameArr.slice(0,-1).join(".");
+    // console.log("name",name)
     ext = nameArr.slice(-1);
+    // console.log("\next\n",ext)
 
-    console.log(elem, name, ext)
+    // console.log('elem, name, ext',elem, name, ext)
 
     let newName = `${ext}*${name}`;
     sortExtByExt.push(newName);
@@ -60,15 +71,15 @@ sortExtByExt.sort();
 
 sortExtByExt.forEach( (elem)=> {
     let nameArr = elem.split('*');
-    sortFilesByExt.push(nameArr[1]+'.'+nameArr[0])
+    sortFilesByExt.push(nameArr[1]+'.'+nameArr[0]);
 })
 
-console.log(sortFilesByExt);
+// console.log(sortFilesByExt);
 
 foldersArr.forEach((elem) => {
-    console.log('['+elem+']')
+    console.log('['+elem+']');
 })
 
 sortFilesByExt.forEach((elem) => {
-    console.log(elem)
+    console.log(elem);
 })
