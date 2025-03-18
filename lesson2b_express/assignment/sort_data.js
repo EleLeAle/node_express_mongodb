@@ -21,28 +21,28 @@ function local(){
 
 }
 
-function expressBus(){
-    let expressBusArr =[];
+function expressTrain(){
+    let expressTrainArr =[];
     for(let line in stations){
-        expressBusArr = expressBusArr.concat( stations[line].filter((elem) => {
+        expressTrainArr = expressTrainArr.concat( stations[line].filter((elem) => {
             return elem["train"].includes('2') || elem["train"].includes('3') || elem["train"].includes('4') || elem["train"].includes('5')
         }));
-        console.log(expressBusArr);
+        console.log(expressTrainArr);
     }
-    return expressBusArr
+    return expressTrainArr
 }
 
 function  getTrain(trainNumber){
     console.log(trainNumber);
-    let expressBusArr =[];
+    let expressTrainArr =[];
     for(let line in stations){
-        expressBusArr = expressBusArr.concat( stations[line].filter((elem) => {
+        expressTrainArr = expressTrainArr.concat( stations[line].filter((elem) => {
             return elem["train"].includes(trainNumber.toString())
         }));
-        console.log(expressBusArr);
+        console.log(expressTrainArr);
     }
-    return expressBusArr
+    return expressTrainArr
 }
 
 
-module.exports = {local, expressBus, getTrain};
+module.exports = {local, expressTrain, getTrain};

@@ -3,7 +3,7 @@ const app = express();
 const PORT = 3000;
 
 const stations = require('./data.js');
-const {local , expressBus, getTrain} = require("./sort_data");
+const {local , expressTrain, getTrain} = require("./sort_data");
 
 app.get("/", (req, res) => {
     console.log("user hit the resource");
@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 
 app.get("/red", (req, res) => {
     console.log("user hit the resource");
-    res.status(200).send(JSON.stringify(stations.redLine));
+    res.status(200).send(stations.redLine);
 });
 
 app.get("/green", (req, res) => {
@@ -27,7 +27,7 @@ app.get("/local", (req, res) => {
 
 app.get("/express", (req, res) => {
     console.log("user hit the resource");
-    res.status(200).send(expressBus());
+    res.status(200).send(expressTrain());
 });
 
 app.get("/:trainNumber(\\d+)", (req, res) => {

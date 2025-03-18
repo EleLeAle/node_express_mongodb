@@ -165,5 +165,5 @@ const station = {
     ]
 }
 
-
+// const trainType
 module.exports = station;
