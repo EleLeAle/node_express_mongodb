@@ -40,7 +40,7 @@ function expressTrain(){
     return expressTrainArr
 }
 
-console.log(expressTrain())
+// console.log(expressTrain())
 // console.log(expressTrain())
 
 function  getTrain(trainNumber){
