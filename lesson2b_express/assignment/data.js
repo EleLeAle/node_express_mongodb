@@ -1,4 +1,4 @@
-const station = {
+const stations = {
         "redLine":
     [
         {
@@ -161,9 +161,24 @@ const station = {
         {
             train: ["6", "9", "7", "10"],
             station: "Station I"
-        }
+        },
+        {
+            train: ["22"],
+            station: "Station 22"
+        },
+        {
+            train: ["33", "5"],
+            station: "Station 33"
+        },
     ]
 }
 
-// const trainType
-module.exports = station;
+const trainType = {
+    "local":[
+        "1", "6"
+    ],
+    "express":[
+        "2", "3", "4","5"
+    ]
+}
+module.exports = {stations, trainType}

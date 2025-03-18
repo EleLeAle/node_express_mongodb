@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-const stations = require('./data.js');
+const {stations} = require('./data.js');
 const {local , expressTrain, getTrain} = require("./sort_data");
 
 app.get("/", (req, res) => {
@@ -19,7 +19,10 @@ app.get("/green", (req, res) => {
     console.log("user hit the resource");
     res.status(200).send(stations.greenLine);
 });
-
+app.get("/orange", (req, res) => {
+    console.log("user hit the resource");
+    res.status(200).send(stations.orangeLine);
+});
 app.get("/local", (req, res) => {
     console.log("user hit the resource");
     res.status(200).send(local());
@@ -27,6 +30,7 @@ app.get("/local", (req, res) => {
 
 app.get("/express", (req, res) => {
     console.log("user hit the resource");
+    // res.send("<h1>EXPRESS TRAINS</h1>");
     res.status(200).send(expressTrain());
 });
 
