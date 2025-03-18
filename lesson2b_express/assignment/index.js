@@ -3,47 +3,44 @@ const app = express();
 const PORT = 3000;
 
 const {stations} = require('./data.js');
-const {local , expressTrain, getTrain} = require("./sort_data");
+const sortTrains = require("./sort_data");
+
 
 app.get("/", (req, res) => {
-    console.log("user hit the resource");
     res.status(200).send(stations);
 });
 
 app.get("/red", (req, res) => {
-    console.log("user hit the resource");
     res.status(200).send(stations.redLine);
 });
 
 app.get("/green", (req, res) => {
-    console.log("user hit the resource");
     res.status(200).send(stations.greenLine);
 });
+
 app.get("/orange", (req, res) => {
-    console.log("user hit the resource");
     res.status(200).send(stations.orangeLine);
 });
+
 app.get("/local", (req, res) => {
-    console.log("user hit the resource");
-    res.status(200).send(local());
+    res.status(200).send(sortTrains("local"));
 });
 
 app.get("/express", (req, res) => {
-    console.log("user hit the resource");
-    // res.send("<h1>EXPRESS TRAINS</h1>");
-    res.status(200).send(expressTrain());
+    res.status(200).send(sortTrains("express"));
 });
 
 app.get("/:trainNumber(\\d+)", (req, res) => {
-    console.log("user hit the resource");
+    let num = req.params["trainNumber"];
 
-    let trains = getTrain(req.params["trainNumber"]);
-    if(trains.length === 0){
+    let callSortTrains = sortTrains("trainNumber",num)
+
+    if(callSortTrains.length === 0){
         res.status(404).send("Train not found")
         return
     }
 
-    res.status(200).send(trains);
+    res.status(200).send(callSortTrains);
 });
 
 app.all("*", (req,res) => {
